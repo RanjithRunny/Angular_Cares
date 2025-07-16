@@ -1,0 +1,90 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2 class="text-center mb-5">Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+      <!-- <div class="form-group">
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          formControlName="username"
+          placeholder="username"
+          [ngClass]="{
+            'is-invalid':
+              loginForm.get('username')?.touched &&
+              loginForm.get('username')?.invalid
+          }"
+        />
+       <div
+          *ngIf="
+            loginForm.get('username')?.touched &&
+            loginForm.get('username')?.invalid
+          "
+          class="error-text"
+        >
+          <div *ngIf="loginForm.get('username')?.errors?.['required']">
+            Username is required.
+          </div>
+          <div *ngIf="loginForm.get('username')?.errors?.['minlength']">
+            Minimum 3 characters.
+          </div>
+        </div> 
+      </div> -->
+      <div class="form-group">
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Email is Your Username"
+          [ngClass]="{
+            'is-invalid':
+              loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+          }"
+        />
+        <div
+          *ngIf="
+            loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+          "
+          class="error-text"
+        >
+          <div *ngIf="loginForm.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password"
+          [ngClass]="{
+            'is-invalid': f['password'].touched && f['password'].invalid
+          }"
+        />
+        <!-- <div
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+          "
+          class="error-text"
+        >
+          <div *ngIf="loginForm.get('password')?.errors?.['required']">
+            password is required.
+          </div>
+        </div> -->
+      </div>
+      <div class="text-center">
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

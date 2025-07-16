@@ -1,0 +1,27 @@
+$gradient-blue: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #93c5fd 100%);
+$text-white: #ffffff;
+$shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+// Header Banner
+.header-banner {
+  background: $gradient-blue;
+  color: $text-white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: $shadow-sm;
+  
+  &__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin: 0.5rem 0 0;
+  }
+}
