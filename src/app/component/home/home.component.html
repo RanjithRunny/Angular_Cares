@@ -1,2 +1,33 @@
-<app-header></app-header>
-<p>home works!</p>
+<div class="wrapper">
+  <app-header></app-header>
+  <!-- <main class="main">
+    <app-dynamic-search-form></app-dynamic-search-form>
+  </main>
+  <app-footer></app-footer> -->
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'insert'"
+        (click)="activeTab = 'insert'"
+        >Insert</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'search'"
+        (click)="activeTab = 'search'"
+        >Search</a
+      >
+    </li>
+  </ul>
+
+  <div class="mt-3">
+    <app-insert *ngIf="activeTab === 'insert'"></app-insert>
+    <app-dynamic-search-form
+      *ngIf="activeTab === 'search'"
+    ></app-dynamic-search-form>
+  </div>
+</div>

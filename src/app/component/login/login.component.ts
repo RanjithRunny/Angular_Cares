@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  options: any = ['options1', 'options2', 'options3'];
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({

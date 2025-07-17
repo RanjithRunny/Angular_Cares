@@ -1,0 +1,50 @@
+<div>
+  <form [formGroup]="insertFrom" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <input
+        id="caseId"
+        type="text"
+        class="form-control"
+        formControlName="caseId"
+        placeholder="Case ID"
+        [ngClass]="{
+          'is-invalid':
+            insertFrom.get('caseId')?.touched &&
+            insertFrom.get('caseId')?.invalid
+        }"
+      />
+      <div
+        *ngIf="
+          insertFrom.get('caseId')?.touched && insertFrom.get('email')?.invalid
+        "
+        class="error-text"
+      ></div>
+    </div>
+    <!-- Text Input -->
+    <div class="form-group">
+      <input
+        type="date"
+        id="name"
+        placeholder="Enter Date"
+        formControlName="date"
+      />
+    </div>
+
+    <!-- Dropdown -->
+    <div class="form-group">
+      <select id="casetype" formControlName="casetype">
+        <option value="" disabled>Select an option</option>
+        <option *ngFor="let opt of options" [value]="opt">{{ opt }}</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="insertFrom.invalid"
+      >
+        Insert
+      </button>
+    </div>
+  </form>
+</div>

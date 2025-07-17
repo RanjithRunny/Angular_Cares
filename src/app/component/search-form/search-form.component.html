@@ -1,0 +1,34 @@
+<div>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <input
+        id="caseId"
+        type="text"
+        class="form-control"
+        formControlName="caseId"
+        placeholder="Case ID"
+        [ngClass]="{
+          'is-invalid':
+            searchForm.get('caseId')?.touched &&
+            searchForm.get('caseId')?.invalid
+        }"
+      />
+      <div
+        *ngIf="
+          searchForm.get('caseId')?.touched && searchForm.get('email')?.invalid
+        "
+        class="error-text"
+      ></div>
+    </div>
+
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="searchForm.invalid"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</div>
