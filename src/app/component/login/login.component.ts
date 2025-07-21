@@ -45,7 +45,7 @@ export class LoginComponent {
           .subscribe({
             next: (res) => {
               console.log('✅ Login successful', res);
-              localStorage.setItem('token', res.token); // Store JWT
+             localStorage.setItem('token', res.token); // Store JWT
               this.router.navigate(['/home']);
             },
             error: (err) => {
