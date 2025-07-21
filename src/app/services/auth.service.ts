@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +13,15 @@ export class AuthService {
   private userEmailSubject = new BehaviorSubject<string | null>(null);
   userEmail$ = this.userEmailSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-    const storedEmail = localStorage.getItem('userEmail');
-    if (storedEmail) {
-      this.userEmailSubject.next(storedEmail);
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedEmail = localStorage.getItem('userEmail');
+      if (storedEmail) {
+        this.userEmailSubject.next(storedEmail);
+      }
     }
   }
 
@@ -34,8 +40,10 @@ export class AuthService {
   }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, userData).pipe(
       tap((res: any) => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('userEmail', userData.username); // save email
+        if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('userEmail', userData.username); // save email
+        }
         this.userEmailSubject.next(userData.username); // broadcast email
       })
     );
@@ -43,12 +51,16 @@ export class AuthService {
 
   logout(): void {
     if (typeof window !== 'undefined') {
-      localStorage.clear(); // ✅ Clears all localStorage
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.clear(); // ✅ Clears all localStorage
+      }
     }
     this.userEmailSubject.next(null); // clear user
   }
 
   isLoggedIn() {
+    // if (isPlatformBrowser(this.platformId)) {
     return !!localStorage.getItem('token');
+    //   }
   }
 }
