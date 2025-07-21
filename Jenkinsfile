@@ -9,21 +9,21 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Build Angular App') {
             steps {
                 echo 'Building Angular application...'
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running unit tests...'
-                sh 'npm test -- --watch=false --browsers=ChromeHeadless'
+                bat 'npm test -- --watch=false --browsers=ChromeHeadless'
             }
         }
     }
