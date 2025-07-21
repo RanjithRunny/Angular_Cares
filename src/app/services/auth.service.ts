@@ -42,7 +42,9 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.clear();
+    if (typeof window !== 'undefined') {
+      localStorage.clear(); // ✅ Clears all localStorage
+    }
     this.userEmailSubject.next(null); // clear user
   }
 

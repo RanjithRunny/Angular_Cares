@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     HeaderComponent,
-    FooterComponent,
+
     SearchFormComponent,
     InsertComponent,
   ],

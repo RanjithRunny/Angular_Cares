@@ -1,0 +1,17 @@
+<table border="1" cellpadding="8" cellspacing="0" style="width: 100%">
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns">{{ col.label }}</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows">
+      <td *ngFor="let col of columns">{{ row[col.field] }}</td>
+      <td>
+        <button (click)="onEdit(row)">✏️</button>
+        <button (click)="onDelete(row)">🗑️</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

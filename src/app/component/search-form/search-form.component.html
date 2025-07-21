@@ -31,4 +31,11 @@
       </button>
     </div>
   </form>
+  <app-table-view
+    [columns]="columns"
+    [rows]="users"
+    (edit)="handleEdit($event)"
+    (delete)="handleDelete($event)"
+  >
+  </app-table-view>
 </div>
