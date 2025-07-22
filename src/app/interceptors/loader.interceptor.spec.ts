@@ -3,13 +3,13 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 import { LoaderInterceptor } from './loader.interceptor';
 
-describe('loaderInterceptor', () => {
-  // const interceptor: HttpInterceptorFn = (req, next) =>
-  //   TestBed.runInInjectionContext(() => loaderInterceptor(req, next));
-  // beforeEach(() => {
-  //   TestBed.configureTestingModule({});
-  // });
-  // it('should be created', () => {
-  //   expect(interceptor).toBeTruthy();
-  // });
-});
+// describe('loaderInterceptor', () => {
+//   // const interceptor: HttpInterceptorFn = (req, next) =>
+//   //   TestBed.runInInjectionContext(() => loaderInterceptor(req, next));
+//   // beforeEach(() => {
+//   //   TestBed.configureTestingModule({});
+//   // });
+//   // it('should be created', () => {
+//   //   expect(interceptor).toBeTruthy();
+//   // });
+// });
